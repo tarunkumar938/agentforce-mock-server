@@ -1,6 +1,8 @@
 package com.agentforce_mock_server.repository;
 
 import com.agentforce_mock_server.dto.GeographyDTO;
+import com.agentforce_mock_server.dto.AccountsDTO;
+import com.agentforce_mock_server.dto.AccountsReq;
 import com.agentforce_mock_server.dto.TechnologyDTO;
 import com.agentforce_mock_server.utils.AgentForceMockResponse;
 import org.springframework.stereotype.Repository;
@@ -9,11 +11,13 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.agentforce_mock_server.utils.ResponseUtils.getSafeValue;
+
 @Repository
 public class AgentForceMockRepository {
 
     public Mono<List<TechnologyDTO>> getTechnologyFilters(){
-        List<List<String>> technologyData = AgentForceMockResponse.technologyData;
+        List<List<String>> technologyData = AgentForceMockResponse.technologyFiltersData;
 
         List<TechnologyDTO> technologyDTOList =
                 technologyData.stream().map(
@@ -42,6 +46,23 @@ public class AgentForceMockRepository {
                         }
                 ).collect(Collectors.toList());
         return Mono.just(geographyDTOList);
+                }
+    public Mono<List<AccountsDTO>> getAccounts(AccountsReq accountsReq) {
+        List<List<String>> accountsData = AgentForceMockResponse.accountsData;
+
+        List<AccountsDTO> accountsDTOList = accountsData.stream()
+                .map(list -> AccountsDTO.builder()
+                        .companyId(getSafeValue(list, 0))
+                        .companyBusinessName(getSafeValue(list, 1))
+                        .website(getSafeValue(list, 2))
+                        .sector(getSafeValue(list, 3))
+                        .industry(getSafeValue(list, 4))
+                        .phoneNumber(getSafeValue(list, 5))
+                        .address(getSafeValue(list, 6))
+                        .build()
+                )
+                .collect(Collectors.toList());
+        return Mono.just(accountsDTOList);
     }
 
 }

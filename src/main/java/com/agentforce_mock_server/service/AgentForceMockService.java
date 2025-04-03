@@ -1,8 +1,6 @@
 package com.agentforce_mock_server.service;
 
-import com.agentforce_mock_server.dto.GeographyDTO;
-import com.agentforce_mock_server.dto.ResponseDTO;
-import com.agentforce_mock_server.dto.TechnologyDTO;
+import com.agentforce_mock_server.dto.*;
 import com.agentforce_mock_server.repository.AgentForceMockRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,4 +32,14 @@ public class AgentForceMockService {
                                 .build()
                 );
     }
+    public Mono<ResponseDTO<AccountsDTO>> getAccounts(AccountsReq accountsReq){
+        return
+                agentForceMockRepository.getAccounts(accountsReq)
+                        .map(
+                                accountsDTOS -> ResponseDTO.<AccountsDTO>builder()
+                                        .result(accountsDTOS)
+                                        .build()
+                        );
+    }
+
 }

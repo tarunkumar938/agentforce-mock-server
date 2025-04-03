@@ -1,13 +1,9 @@
 package com.agentforce_mock_server.controller;
 
-import com.agentforce_mock_server.dto.GeographyDTO;
-import com.agentforce_mock_server.dto.ResponseDTO;
-import com.agentforce_mock_server.dto.TechnologyDTO;
+import com.agentforce_mock_server.dto.*;
 import com.agentforce_mock_server.service.AgentForceMockService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -25,6 +21,11 @@ public class AgentForceMockController {
     @GetMapping("/geography/filters")
     public Mono<ResponseDTO<GeographyDTO>> getGeographyFilters() {
         return agentForceMockService.getGeographyFilters();
+    }
+
+    @PostMapping("result")
+    public Mono<ResponseDTO<AccountsDTO>> getAccounts(@RequestBody AccountsReq accountsReq){
+        return agentForceMockService.getAccounts(accountsReq);
     }
 
 }
