@@ -1,5 +1,6 @@
 package com.agentforce_mock_server.service;
 
+import com.agentforce_mock_server.dto.GeographyDTO;
 import com.agentforce_mock_server.dto.ResponseDTO;
 import com.agentforce_mock_server.dto.TechnologyDTO;
 import com.agentforce_mock_server.repository.AgentForceMockRepository;
@@ -23,5 +24,14 @@ public class AgentForceMockService {
                                         .result(technologyDTOS)
                                         .build()
                         );
+    }
+
+    public Mono<ResponseDTO<GeographyDTO>> getGeographyFilters() {
+        return
+                agentForceMockRepository.getGeographyFilters().map(
+                        geographyDTOS -> ResponseDTO.<GeographyDTO>builder()
+                                .result(geographyDTOS)
+                                .build()
+                );
     }
 }

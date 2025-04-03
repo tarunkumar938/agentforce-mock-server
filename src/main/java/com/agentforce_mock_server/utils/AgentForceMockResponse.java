@@ -20,10 +20,15 @@ public class AgentForceMockResponse {
             );
 
     public static final List<List<String>> geographyFilterData =
-            List.of();
+            List.of(
+                    List.of("USA", "USA"),
+                    List.of("APeJC", "India")
+            );
 
     public static final List<List<String>> industryFilterData =
-            List.of();
-
+            List.of(
+                    List.of("Infrastructure", "Telecommunications"),
+                    List.of("Public Sector", "Healthcare Provider")
+            );
 
 }
