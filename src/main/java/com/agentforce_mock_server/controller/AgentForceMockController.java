@@ -27,12 +27,12 @@ public class AgentForceMockController {
         return agentForceMockService.getGeographyFilters();
     }
 
-    @GetMapping("industry/filters")
+    @GetMapping("/industry/filters")
     public Mono<ResponseDTO<IndustryDTO>> getIndustryFilters() {
         return agentForceMockService.getIndustryFilters();
     }
     
-    @PostMapping("result")
+    @PostMapping("/result")
     public Mono<ResponseDTO<AccountsDTO>> getAccounts(@RequestBody AccountsReq accountsReq){
         return agentForceMockService.getAccounts(accountsReq);
     }
