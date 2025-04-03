@@ -1,6 +1,7 @@
 package com.agentforce_mock_server.repository;
 
 import com.agentforce_mock_server.dto.GeographyDTO;
+import com.agentforce_mock_server.dto.IndustryDTO;
 import com.agentforce_mock_server.dto.TechnologyDTO;
 import com.agentforce_mock_server.utils.AgentForceMockResponse;
 import org.springframework.stereotype.Repository;
@@ -42,6 +43,21 @@ public class AgentForceMockRepository {
                         }
                 ).collect(Collectors.toList());
         return Mono.just(geographyDTOList);
+    }
+
+    public Mono<List<IndustryDTO>> getIndustryFilters() {
+        List<List<String>> industryData = AgentForceMockResponse.industryFilterData;
+
+        List<IndustryDTO> industryDTOList =
+                industryData.stream().map(
+                        list -> {
+                            return IndustryDTO.builder()
+                                    .sector(list.get(0))
+                                    .industry(list.get(1))
+                                    .build();
+                        }
+                ).collect(Collectors.toList());
+        return Mono.just(industryDTOList);
     }
 
 }
