@@ -10,4 +10,5 @@ import java.util.List;
 @Data
 public class AccountsReq {
     List<MarketFilters> filters;
+    Integer limit;
 }

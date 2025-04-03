@@ -6,6 +6,7 @@ import com.agentforce_mock_server.dto.AccountsDTO;
 import com.agentforce_mock_server.dto.AccountsReq;
 import com.agentforce_mock_server.dto.TechnologyDTO;
 import com.agentforce_mock_server.utils.AgentForceMockResponse;
+import lombok.val;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
@@ -49,9 +50,11 @@ public class AgentForceMockRepository {
         return Mono.just(geographyDTOList);
                 }
     public Mono<List<AccountsDTO>> getAccounts(AccountsReq accountsReq) {
+        val limit = accountsReq.getLimit();
         List<List<String>> accountsData = AgentForceMockResponse.accountsData;
 
         List<AccountsDTO> accountsDTOList = accountsData.stream()
+                .limit(limit)
                 .map(list -> AccountsDTO.builder()
                         .companyId(getSafeValue(list, 0))
                         .companyBusinessName(getSafeValue(list, 1))
