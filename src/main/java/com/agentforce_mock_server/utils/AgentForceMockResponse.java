@@ -19,5 +19,11 @@ public class AgentForceMockResponse {
                     List.of("Business Services","Managed Services", "Key Horizontal BPO","Key Horizontal BPO" )
             );
 
+    public static final List<List<String>> geographyFilterData =
+            List.of();
+
+    public static final List<List<String>> industryFilterData =
+            List.of();
+
 
 }
