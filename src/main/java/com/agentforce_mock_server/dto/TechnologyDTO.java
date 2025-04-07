@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class TechnologyDTO {
 
-    String TechnologyGroup;
-    String TechnologyCategory;
-    String Technology;
-    String TechnologyDetail;
+  String TechnologyGroup;
+  String TechnologyCategory;
+  String Technology;
+  String TechnologyDetail;
 }

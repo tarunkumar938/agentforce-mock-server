@@ -6,6 +6,6 @@ import lombok.Data;
 @Builder
 @Data
 public class GeographyDTO {
-    String region;
-    String country;
+  String region;
+  String country;
 }

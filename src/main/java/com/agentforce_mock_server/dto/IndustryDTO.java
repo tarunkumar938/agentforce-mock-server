@@ -6,6 +6,6 @@ import lombok.Data;
 @Builder
 @Data
 public class IndustryDTO {
-    String sector;
-    String industry;
+  String sector;
+  String industry;
 }
